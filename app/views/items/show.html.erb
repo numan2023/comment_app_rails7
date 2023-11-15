@@ -1,0 +1,41 @@
+<h3>詳細ページ</h3>
+<div class="posted-content">
+  <%= image_tag @item.image %><br>
+  <table>
+    <tr>
+      <td>商品名</td>
+      <td><%= @item.name%></td>
+    </tr>
+    <tr>
+      <td>カテゴリー</td>
+      <td><%= @item.category.name%></td>
+    </tr>
+    <tr>
+      <td>価格</td>
+      <td><%= @item.price%></td>
+    </tr>
+    <tr>
+  </table>
+  <% if user_signed_in? && current_user.id == @item.user_id%>
+    <%= link_to '編集', edit_item_path(@item.id)%>
+  <% end %>
+</div>
+
+<div id="comments">
+  <h4>＜コメント一覧＞</h4>
+    <% @item.comments.each do |comment| %>
+      <div class="comment">
+        <p class="user-info"><%= comment.user.nickname %>: </p>
+        <p><%= comment.text%></p>
+      </div>
+    <% end %>
+</div>
+
+<div class="comment-form">
+  <% if user_signed_in? %>
+    <%= form_with model: [@item, @comment], id: "comment-form" do |f| %>
+      <%= f.text_area :text , class: "comment-text"%>
+      <%= f.submit "コメントをする", class: "comment-submit" %>
+    <% end %>
+  <% end %>
+</div>

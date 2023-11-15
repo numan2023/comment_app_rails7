@@ -1,0 +1,27 @@
+.comment-form{
+  display: flex;
+}
+
+.comment-text{
+  display: block;
+  margin-top: 20px;
+}
+
+.comment-submit{
+  display: block;
+  margin-top: 20px;
+}
+
+.comment{
+  display: flex;
+}
+
+/* pは<p>タグ＝段落を表す要素, comment pはclass=commentの要素の中にある全ての<p>タグに適用される */
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
